@@ -50,7 +50,7 @@ public class XMLConfigBuilder {
         // mapperXml解析
         List<Element> mapperList = rootElement.selectNodes("//mapper");
         for (Element element : mapperList) {
-            String mapperPath = element.attributeValue("resource");
+            String mapperPath = element.attributeValue("resources");
             InputStream resouceAsStream = Resources.getResouceAsStream(mapperPath);
             XMLMapperBuilder xmlMapperBuilder = new XMLMapperBuilder(configuration);
             xmlMapperBuilder.parse(resouceAsStream);

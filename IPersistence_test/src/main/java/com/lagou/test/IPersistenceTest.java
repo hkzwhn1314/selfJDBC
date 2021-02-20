@@ -23,5 +23,7 @@ public class IPersistenceTest {
         user.setId(1);
         user.setUsername("张三");
         Object user2 = sqlSession.selectOne("user.selectOne", user);
+
+        
     }
 }

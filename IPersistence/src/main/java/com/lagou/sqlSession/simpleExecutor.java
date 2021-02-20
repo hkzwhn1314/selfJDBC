@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class simpleExecutor implements Executor {
+    @Override
     public <E> List<E> query(Configuration configuration, MapperStatement mapperStatement, Object... params) throws SQLException, ClassNotFoundException, NoSuchFieldException, IllegalAccessException, IntrospectionException, InstantiationException, InvocationTargetException {
         // 1. 注册驱动，获取链接
         Connection connection = configuration.getDataSource().getConnection();
@@ -51,7 +52,7 @@ public class simpleExecutor implements Executor {
         while (resultSet.next()) {
             Object o = resultTypeClass.newInstance();
             ResultSetMetaData metaData = resultSet.getMetaData();
-            for (int i = 0; i <= metaData.getColumnCount() ; i++) {
+            for (int i = 1; i <= metaData.getColumnCount() ; i++) {
                 // 字段名
                 String columnName = metaData.getColumnName(i);
                 //
